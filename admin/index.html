@@ -6,9 +6,28 @@
     <title>Content Manager · Bridging the A-I-R</title>
 </head>
 <body>
-    <!-- Netlify Identity widget -->
+    <!-- Netlify Identity widget — must be loaded first -->
     <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+
     <!-- Decap CMS main app -->
     <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+
+    <!-- Point Netlify Identity to our Netlify site (since this page lives on GitHub Pages) -->
+    <script>
+        if (window.netlifyIdentity) {
+            // IMPORTANT: this links the GitHub-hosted admin page to the Netlify Identity instance
+            window.netlifyIdentity.init({
+                APIUrl: "https://nimble-hummingbird-034877.netlify.app/.netlify/identity"
+            });
+
+            window.netlifyIdentity.on("init", user => {
+                if (!user) {
+                    window.netlifyIdentity.on("login", () => {
+                        document.location.href = "/btair-eleventy/admin/";
+                    });
+                }
+            });
+        }
+    </script>
 </body>
 </html>

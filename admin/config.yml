@@ -6,11 +6,11 @@ backend:
   branch: main
 
 media_folder: "src/assets/uploads"
-public_folder: "/assets/uploads"
+public_folder: "/btair-eleventy/assets/uploads"
 
-site_url: https://btair.eu
-display_url: https://btair.eu
-logo_url: /assets/logos/btair-logo.png
+site_url: https://ondrejwald.github.io/btair-eleventy/
+display_url: https://ondrejwald.github.io/btair-eleventy/
+logo_url: /btair-eleventy/assets/logos/btair-logo-header.png
 
 locale: "en"
 
