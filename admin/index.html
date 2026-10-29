@@ -6,38 +6,23 @@
     <title>Content Manager · Bridging the A-I-R</title>
 </head>
 <body>
-    <!--
-      IMPORTANT: Netlify Identity widget must know where the Identity service lives.
-      Because this admin page is hosted on GitHub Pages (not Netlify itself),
-      we must manually point it to the Netlify site that provides Identity.
-    -->
-    <script>
-        // This global tells the Netlify Identity widget which Netlify site to use
-        window.netlifyIdentityConfig = {
-            APIUrl: "https://nimble-hummingbird-034877.netlify.app/.netlify/identity"
-        };
-    </script>
-
     <!-- Netlify Identity widget -->
     <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 
-    <!-- Explicitly initialize Netlify Identity against our Netlify site -->
+    <!-- Decap CMS main app -->
+    <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+
+    <!-- Netlify Identity redirect after login -->
     <script>
         if (window.netlifyIdentity) {
-            window.netlifyIdentity.init({
-                APIUrl: "https://nimble-hummingbird-034877.netlify.app/.netlify/identity"
-            });
             window.netlifyIdentity.on("init", user => {
                 if (!user) {
                     window.netlifyIdentity.on("login", () => {
-                        document.location.href = "/btair-eleventy/admin/";
+                        document.location.href = "/admin/";
                     });
                 }
             });
         }
     </script>
-
-    <!-- Decap CMS main app -->
-    <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
 </body>
 </html>

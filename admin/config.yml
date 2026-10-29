@@ -4,16 +4,13 @@
 backend:
   name: git-gateway
   branch: main
-  # IMPORTANT: tells Decap CMS where to find the Netlify Identity instance,
-  # since this admin page lives on GitHub Pages (not on Netlify itself)
-  base_url: https://nimble-hummingbird-034877.netlify.app
 
 media_folder: "src/assets/uploads"
-public_folder: "/btair-eleventy/assets/uploads"
+public_folder: "/assets/uploads"
 
-site_url: https://ondrejwald.github.io/btair-eleventy/
-display_url: https://ondrejwald.github.io/btair-eleventy/
-logo_url: /btair-eleventy/assets/logos/btair-logo-header.png
+site_url: https://nimble-hummingbird-034877.netlify.app
+display_url: https://nimble-hummingbird-034877.netlify.app
+logo_url: /assets/logos/btair-logo-header.png
 
 locale: "en"
 

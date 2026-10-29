@@ -1,0 +1,15 @@
+# Netlify configuration for Bridging the A-I-R
+
+[build]
+  command = "npm run build"
+  publish = "_site"
+
+[build.environment]
+  NODE_VERSION = "20"
+
+# Optional: redirect www to apex (useful once you connect btair.eu)
+# [[redirects]]
+#   from = "https://www.btair.eu/*"
+#   to = "https://btair.eu/:splat"
+#   status = 301
+#   force = true
