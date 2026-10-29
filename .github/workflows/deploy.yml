@@ -31,6 +31,10 @@ jobs:
         run: npm ci
 
       - name: Build Eleventy site
+        env:
+          # On GitHub Pages, site lives under /<repo-name>/
+          # Automatic — reads repo name from GITHUB_REPOSITORY (owner/repo)
+          PATH_PREFIX: /${{ github.event.repository.name }}/
         run: npm run build
 
       - name: Upload artifact

@@ -53,6 +53,9 @@ module.exports = function(eleventyConfig) {
         },
         templateFormats: ["njk", "md", "html"],
         markdownTemplateEngine: "njk",
-        htmlTemplateEngine: "njk"
+        htmlTemplateEngine: "njk",
+        // Change this if deployed to a subpath (GitHub Pages = "/<repo-name>/")
+        // When you connect custom domain btair.eu, change back to "/"
+        pathPrefix: process.env.PATH_PREFIX || "/"
     };
 };

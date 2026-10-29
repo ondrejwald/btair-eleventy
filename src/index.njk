@@ -6,7 +6,7 @@ layout: base.njk
 <header class="topbar" id="top">
     <div class="topbar__inner">
         <a href="#top" class="brand" aria-label="Bridging the A-I-R — home">
-            <img src="/assets/logos/btair-logo-header.png" alt="Bridging the A-I-R" class="brand__logo">
+            <img src="{{ '/assets/logos/btair-logo-header.png' | url }}" alt="Bridging the A-I-R" class="brand__logo">
         </a>
         <nav class="nav" aria-label="Primary">
             <a href="#about"       data-section="about">About The Project</a>
@@ -65,7 +65,7 @@ layout: base.njk
             <li><a class="airlink{% if platform.status != 'live' %} airlink--preparing{% endif %}" href="{{ platform.url }}">
                 <span class="airlink__code">{{ platform.code }}</span>
                 <span class="airlink__name">{{ platform.label }}</span>
-                <img class="airlink__flag" src="/assets/flags/{{ platform.code | lower }}.svg" alt="" aria-hidden="true">
+                <img class="airlink__flag" src="{{ ('/assets/flags/' + (platform.code | lower) + '.svg') | url }}" alt="" aria-hidden="true">
                 {% if platform.status != 'live' %}<span class="airlink__status">In preparation</span>{% endif %}
             </a></li>
             {%- endfor %}
@@ -227,7 +227,7 @@ layout: base.njk
 <footer class="footer">
     <div class="footer__inner">
         <div class="footer__eu">
-            <img src="/assets/logos/eu-cofunded-black.png" alt="Co-funded by the European Union" class="footer__eu-logo">
+            <img src="{{ '/assets/logos/eu-cofunded-black.png' | url }}" alt="Co-funded by the European Union" class="footer__eu-logo">
             <p class="footer__eu-text">
                 Funded by the European Union. Views and opinions expressed are however those of the author(s) only and do not necessarily reflect those of the European Union or the European Education and Culture Executive Agency (EACEA). Neither the European Union nor the granting authority can be held responsible for them.
             </p>
@@ -238,7 +238,7 @@ layout: base.njk
         </p>
 
         <div class="footer__bottom">
-            <img src="/assets/logos/nova-sit.svg" alt="Nová síť z.s." class="footer__ns">
+            <img src="{{ '/assets/logos/nova-sit.svg' | url }}" alt="Nová síť z.s." class="footer__ns">
             <span class="footer__copy">© <span id="year">2026</span> Bridging the A-I-R · btair.eu</span>
         </div>
     </div>
