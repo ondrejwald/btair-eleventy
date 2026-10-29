@@ -1,0 +1,42 @@
+{
+    "about": {
+        "title": "About The Project",
+        "meta": "An international cooperation project supported by the Creative Europe programme.",
+        "body": "Bridging the A-I-R brings together six partners from Czechia, Slovakia, Hungary, Italy, Germany and Spain to improve how artistic residencies work. From 2026 to 2030 we test practical models, share experiences and build a connected network of ART-IN-RES platforms. For artists this means clearer information and more opportunities. For host organisations it offers resources, mentoring and shared learning. The project focuses on sustainable mobility, fair conditions and strong local connections, informed by participants' experiences and open to the field."
+    },
+    "webSignpost": {
+        "title": "Web signpost",
+        "subtitle": "AIR in air",
+        "body": "Looking for a residency or a place to host artistic work? ART-IN-RES helps connect artists and residency providers. Bridging the A-I-R supports three national platforms — Czechia, Slovakia and Hungary — with practical information about residency venues and opportunities. Choose where to start."
+    },
+    "residenciesIntro": {
+        "title": "Residencies in practice",
+        "models": {
+            "subtitle": "Residency models",
+            "body": "What makes a residency useful for artists, hosts and the place where it happens? Our research describes ten residency scenarios and selects four for practical testing. The focus is on how residencies connect with local contexts, how artists travel, how learning is supported and how the work can continue after the stay. The results support both experienced hosts and organisations starting their first residency programme."
+        },
+        "programme": {
+            "subtitle": "Programme",
+            "body": "The project will test four residency models through 12 pilot residencies across six countries. Each pilot connects the needs of its artist with the host organisation's context. The schedule below shows planned residencies with model, dates and local context."
+        },
+        "reports": {
+            "subtitle": "Reports",
+            "body": "What did the residency make possible, and what could work better next time? This section will share reflections from residents, hosts and mentors across the project. Reports are added as residencies take place and reviewed by the partner organisations before publication."
+        }
+    },
+    "researchIntro": {
+        "title": "Project outputs",
+        "subtitle": "Research, methodology, manuals",
+        "body": "Explore public research, practical guides and tools developed through Bridging the A-I-R. These resources are intended for artists, host organisations and funders working with residencies. All resources are published in English and may be used freely for non-commercial purposes with attribution."
+    },
+    "eventsIntro": {
+        "title": "Events & News",
+        "subtitle": "What is happening right now",
+        "body": "Follow residency calls, project meetings and public activities. Each listing will include practical information about who it is for, when and where it takes place, how to join or register, and in which language it will be held. Events are added as they are confirmed by the partners."
+    },
+    "contactsIntro": {
+        "title": "Contacts",
+        "subtitle": "More about partners",
+        "body": "Bridging the A-I-R brings together six partner organisations from Czechia, Slovakia, Hungary, Italy, Germany and Spain. We combine experience from local residency programmes, cultural networks and performing arts venues. Together we develop practical models for how residencies can work across different contexts in Europe."
+    }
+}

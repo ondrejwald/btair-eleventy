@@ -1,0 +1,293 @@
+---
+layout: base.njk
+---
+
+<!-- ===== TOP BAR ===== -->
+<header class="topbar" id="top">
+    <div class="topbar__inner">
+        <a href="#top" class="brand" aria-label="Bridging the A-I-R — home">
+            <img src="/assets/logos/btair-logo-header.png" alt="Bridging the A-I-R" class="brand__logo">
+        </a>
+        <nav class="nav" aria-label="Primary">
+            <a href="#about"       data-section="about">About The Project</a>
+            <a href="#web"         data-section="web">Web</a>
+            <a href="#residencies" data-section="residencies">Residencies</a>
+            <a href="#research"    data-section="research">Research</a>
+            <a href="#events"      data-section="events">Events</a>
+            <a href="#contacts"    data-section="contacts">Contacts</a>
+        </nav>
+    </div>
+</header>
+
+<div class="bg-frame" aria-hidden="true"></div>
+
+<main class="page">
+
+    <!-- ===== 1. ABOUT THE PROJECT ===== -->
+    <section class="section" id="about">
+        <p class="section__meta">{{ sections.about.meta }}</p>
+
+        <div class="timeline" aria-label="Project timeline 2026–2030">
+            <div class="timeline__row">
+                <span class="timeline__date">1 Feb 2026</span>
+                <span class="timeline__now" id="timeline-current">Month 9 of 48 · 39 to go</span>
+                <span class="timeline__date">31 Jan 2030</span>
+            </div>
+            <div class="timeline__bar">
+                <span class="timeline__progress" id="timeline-progress" style="width: 18.5%"></span>
+            </div>
+            <div class="timeline__labels">
+                <span>Year 1</span><span>Year 2</span><span>Year 3</span><span>Year 4</span>
+            </div>
+        </div>
+
+        <h1 class="section__title">{{ sections.about.title }}</h1>
+
+        <p class="section__lede">{{ sections.about.body }}</p>
+
+        <ul class="signpost">
+            {%- for card in collections.signpost %}
+            <li><a class="signpost__card" href="{{ card.data.link }}">
+                <h3>{{ card.data.title }}</h3>
+                <div class="signpost__card-body">{{ card.templateContent | safe }}</div>
+            </a></li>
+            {%- endfor %}
+        </ul>
+    </section>
+
+    <!-- ===== 2. WEB SIGNPOST ===== -->
+    <section class="section" id="web">
+        <h2 class="section__title">{{ sections.webSignpost.title }} <span class="section__sub">· {{ sections.webSignpost.subtitle }}</span></h2>
+        <p class="section__lede">{{ sections.webSignpost.body }}</p>
+
+        <ul class="airlinks">
+            {%- for platform in site.nationalPlatforms %}
+            <li><a class="airlink{% if platform.status != 'live' %} airlink--preparing{% endif %}" href="{{ platform.url }}">
+                <span class="airlink__code">{{ platform.code }}</span>
+                <span class="airlink__name">{{ platform.label }}</span>
+                <img class="airlink__flag" src="/assets/flags/{{ platform.code | lower }}.svg" alt="" aria-hidden="true">
+                {% if platform.status != 'live' %}<span class="airlink__status">In preparation</span>{% endif %}
+            </a></li>
+            {%- endfor %}
+        </ul>
+    </section>
+
+    <!-- ===== 3. RESIDENCIES ===== -->
+    <section class="section" id="residencies">
+        <h2 class="section__title">{{ sections.residenciesIntro.title }}</h2>
+
+        <nav class="subnav" aria-label="Residencies subsections">
+            <a href="#res-models" class="is-active">1 · Residency models</a>
+            <a href="#res-programme">2 · Programme</a>
+            <a href="#res-reports">3 · Reports</a>
+        </nav>
+
+        <h3 class="section__sub-title" id="res-models">{{ sections.residenciesIntro.models.subtitle }}</h3>
+        <p class="section__lede">{{ sections.residenciesIntro.models.body }}</p>
+
+        <h3 class="section__sub-title" id="res-programme">{{ sections.residenciesIntro.programme.subtitle }}</h3>
+        <p class="section__lede">{{ sections.residenciesIntro.programme.body }}</p>
+
+        {% if collections.pilots.length %}
+        <ul class="events">
+            {%- for pilot in collections.pilots %}
+            <li class="event event--{{ pilot.data.status | lower }}">
+                <figure class="event__media">
+                    {% if pilot.data.image %}
+                        <img src="{{ pilot.data.image }}" alt="{{ pilot.data.title }}">
+                    {% else %}
+                        <span>Photo or graphic<br>of the residency</span>
+                    {% endif %}
+                </figure>
+                <div class="event__body">
+                    <span class="event__date">{{ pilot.data.startDate | formatDate }} – {{ pilot.data.endDate | formatDate }} · {{ pilot.data.country }}</span>
+                    <h4 class="event__title">{{ pilot.data.title }}</h4>
+                    <p class="event__org">Hosted by {{ pilot.data.host }}{% if pilot.data.model %} · {{ pilot.data.model }}{% endif %}</p>
+                    <div class="event__desc">{{ pilot.templateContent | safe }}</div>
+                </div>
+            </li>
+            {%- endfor %}
+        </ul>
+        {% else %}
+        <p class="empty-state">Pilot residencies will appear here once confirmed.</p>
+        {% endif %}
+
+        <h3 class="section__sub-title" id="res-reports">{{ sections.residenciesIntro.reports.subtitle }}</h3>
+        <p class="section__lede">{{ sections.residenciesIntro.reports.body }}</p>
+
+        {% if collections.reports.length %}
+        <ul class="output-list">
+            {%- for report in collections.reports %}
+            <li class="output">
+                <h3 class="output__title">{{ report.data.title }}</h3>
+                <div class="output__desc">{{ report.templateContent | safe }}</div>
+                {% if report.data.file %}<a class="output__action" href="{{ report.data.file }}">Open document →</a>{% endif %}
+            </li>
+            {%- endfor %}
+        </ul>
+        {% else %}
+        <p class="empty-state">Reports from artists, hosts and mentors will appear here as residencies take place.</p>
+        {% endif %}
+    </section>
+
+    <!-- ===== 4. RESEARCH ===== -->
+    <section class="section" id="research">
+        <h2 class="section__title">{{ sections.researchIntro.title }} <span class="section__sub">· {{ sections.researchIntro.subtitle }}</span></h2>
+        <p class="section__lede">{{ sections.researchIntro.body }}</p>
+
+        <ul class="output-list">
+            {%- for item in collections.research %}
+            {% if item.data.visible !== false %}
+            <li class="output">
+                <h3 class="output__title">{{ item.data.title }}
+                    {% if item.data.status %}<span class="output__status output__status--{{ item.data.status | lower | replace(' ', '-') }}">{{ item.data.status }}</span>{% endif %}
+                </h3>
+                <div class="output__desc">{{ item.templateContent | safe }}</div>
+                {% if item.data.file %}<a class="output__action" href="{{ item.data.file }}">Open document →</a>{% endif %}
+            </li>
+            {% endif %}
+            {%- endfor %}
+        </ul>
+    </section>
+
+    <!-- ===== 5. EVENTS & NEWS ===== -->
+    <section class="section" id="events">
+        <h2 class="section__title">{{ sections.eventsIntro.title }} <span class="section__sub">· {{ sections.eventsIntro.subtitle }}</span></h2>
+        <p class="section__lede">{{ sections.eventsIntro.body }}</p>
+
+        {% if collections.events.length %}
+        <h3 class="events__subhead">Upcoming programme</h3>
+        <ul class="events">
+            {%- for event in collections.events %}
+            <li class="event event--{{ event.data.status | lower }}">
+                <figure class="event__media">
+                    {% if event.data.image %}
+                        <img src="{{ event.data.image }}" alt="{{ event.data.title }}">
+                    {% else %}
+                        <span>Photo or graphic<br>of the event</span>
+                    {% endif %}
+                </figure>
+                <div class="event__body">
+                    <span class="event__date">{{ event.data.date | formatDate }}{% if event.data.city %} · {{ event.data.city }}{% endif %}{% if event.data.venue %} · {{ event.data.venue }}{% endif %}</span>
+                    <h4 class="event__title">{{ event.data.title }}</h4>
+                    {% if event.data.organiser %}<p class="event__org">Organised by {{ event.data.organiser }}</p>{% endif %}
+                    <div class="event__desc">{{ event.templateContent | safe }}</div>
+                    {% if event.data.link and event.data.link != "#" %}<a class="event__cta" href="{{ event.data.link }}">{{ event.data.linkLabel }} →</a>{% endif %}
+                </div>
+                <span class="event__badge">{{ event.data.date | formatDate("short") }}</span>
+            </li>
+            {%- endfor %}
+        </ul>
+        {% else %}
+        <p class="empty-state">Events will appear here as they are confirmed.</p>
+        {% endif %}
+    </section>
+
+    <!-- ===== 6. CONTACTS ===== -->
+    <section class="section" id="contacts">
+        <h2 class="section__title">{{ sections.contactsIntro.title }} <span class="section__sub">· {{ sections.contactsIntro.subtitle }}</span></h2>
+        <p class="section__lede">{{ sections.contactsIntro.body }}</p>
+
+        <ul class="partners">
+            {%- for partner in collections.partners %}
+            <li class="partner{% if partner.data.isLead %} partner--lead{% endif %}">
+                <header class="partner__head">
+                    <span class="partner__role">{{ partner.data.role }}{% if not partner.data.isLead %} · {{ partner.data.countryCode }}{% endif %}</span>
+                    <a class="partner__site" href="{{ partner.data.website }}">{{ partner.data.websiteLabel }} →</a>
+                </header>
+                <div class="partner__body">
+                    <h3 class="partner__name">{{ partner.data.name }}</h3>
+                    <p class="partner__country">{{ partner.data.country }}</p>
+                    <div class="partner__desc">{{ partner.templateContent | safe }}</div>
+                </div>
+            </li>
+            {%- endfor %}
+        </ul>
+
+        <div class="contacts">
+            <h3 class="contacts__title">Project &amp; communication contacts</h3>
+            <div class="contacts__grid">
+                <div class="contacts__card">
+                    <h4>{{ site.contacts.project.name }}</h4>
+                    <p>{{ site.contacts.project.role }} · Bridging the A-I-R</p>
+                    <a href="mailto:{{ site.contacts.project.email }}">{{ site.contacts.project.email }}</a>
+                </div>
+                <div class="contacts__card">
+                    <h4>{{ site.contacts.communication.name }}</h4>
+                    <p>{{ site.contacts.communication.role }} · Bridging the A-I-R</p>
+                    <a href="mailto:{{ site.contacts.communication.email }}">{{ site.contacts.communication.email }}</a>
+                </div>
+            </div>
+            <p class="contacts__note">For press enquiries and partnership proposals, please contact the communication manager.</p>
+        </div>
+    </section>
+</main>
+
+<!-- ===== FOOTER ===== -->
+<footer class="footer">
+    <div class="footer__inner">
+        <div class="footer__eu">
+            <img src="/assets/logos/eu-cofunded-black.png" alt="Co-funded by the European Union" class="footer__eu-logo">
+            <p class="footer__eu-text">
+                Funded by the European Union. Views and opinions expressed are however those of the author(s) only and do not necessarily reflect those of the European Union or the European Education and Culture Executive Agency (EACEA). Neither the European Union nor the granting authority can be held responsible for them.
+            </p>
+        </div>
+
+        <p class="footer__project">
+            Bridging the A-I-R (BtAIR) is co-funded by the Creative Europe programme of the European Union (project no. {{ site.projectCode }}, 2026–2030). Project coordinated by <strong>{{ site.coordinator }}</strong> in cooperation with IDRA Teatro (IT), Inestable (ES), Anténa (SK), schloss bröllin e.V. (DE) and METTRIN Arts Center / Swing Jazz Kulturáért Alapítvány (HU). Associated partners: Czech Centres and Creative Institute Trenčín (European Capital of Culture Trenčín 2026).
+        </p>
+
+        <div class="footer__bottom">
+            <img src="/assets/logos/nova-sit.svg" alt="Nová síť z.s." class="footer__ns">
+            <span class="footer__copy">© <span id="year">2026</span> Bridging the A-I-R · btair.eu</span>
+        </div>
+    </div>
+</footer>
+
+<script>
+    // Current year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Active section highlighter
+    const sections = document.querySelectorAll('main .section[id]');
+    const navLinks = document.querySelectorAll('.nav a[data-section]');
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const id = entry.target.id;
+                navLinks.forEach(link => {
+                    link.classList.toggle('is-active', link.dataset.section === id);
+                });
+            }
+        });
+    }, { rootMargin: "-40% 0px -55% 0px" });
+    sections.forEach(sec => observer.observe(sec));
+
+    // Automatic project timeline calculation
+    (function() {
+        const projectStart = new Date('2026-02-01');
+        const projectEnd   = new Date('2030-01-31');
+        const today        = new Date();
+        const totalMs   = projectEnd - projectStart;
+        const elapsedMs = Math.max(0, Math.min(totalMs, today - projectStart));
+        const progressPercent = (elapsedMs / totalMs) * 100;
+        const msPerMonth = 1000 * 60 * 60 * 24 * 30.44;
+        const totalMonths   = Math.round(totalMs / msPerMonth);
+        const elapsedMonths = Math.max(0, Math.min(totalMonths, Math.round(elapsedMs / msPerMonth)));
+        const remainingMonths = totalMonths - elapsedMonths;
+        const currentEl  = document.getElementById('timeline-current');
+        const progressEl = document.getElementById('timeline-progress');
+        if (currentEl) {
+            if (today < projectStart) {
+                currentEl.textContent = 'Starting soon · ' + totalMonths + ' months ahead';
+            } else if (today > projectEnd) {
+                currentEl.textContent = 'Project completed · ' + totalMonths + ' of ' + totalMonths;
+            } else {
+                currentEl.textContent = 'Month ' + elapsedMonths + ' of ' + totalMonths + ' · ' + remainingMonths + ' to go';
+            }
+        }
+        if (progressEl) {
+            progressEl.style.width = progressPercent.toFixed(1) + '%';
+        }
+    })();
+</script>

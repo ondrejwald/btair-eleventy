@@ -1,0 +1,233 @@
+# Decap CMS configuration for Bridging the A-I-R
+# Edit this file to add new fields or collections
+
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "src/assets/uploads"
+public_folder: "/assets/uploads"
+
+site_url: https://btair.eu
+display_url: https://btair.eu
+logo_url: /assets/logos/btair-logo.png
+
+locale: "en"
+
+collections:
+  # ============== SECTION TEXTS (single files) ==============
+  - name: "sections"
+    label: "📝 Section texts (About, Web, Contacts…)"
+    files:
+      - name: "all-sections"
+        label: "All main section texts"
+        file: "src/_data/sections.json"
+        fields:
+          - name: about
+            label: "About The Project"
+            widget: object
+            fields:
+              - { name: title, label: "Title", widget: string }
+              - { name: meta,  label: "Meta line (small text above title)", widget: string }
+              - { name: body,  label: "Main paragraph", widget: text }
+          - name: webSignpost
+            label: "Web Signpost"
+            widget: object
+            fields:
+              - { name: title,    label: "Title",    widget: string }
+              - { name: subtitle, label: "Subtitle", widget: string }
+              - { name: body,     label: "Body",     widget: text }
+          - name: residenciesIntro
+            label: "Residencies — intros"
+            widget: object
+            fields:
+              - { name: title, label: "Section title", widget: string }
+              - name: models
+                label: "1 · Residency Models"
+                widget: object
+                fields:
+                  - { name: subtitle, label: "Subtitle", widget: string }
+                  - { name: body,     label: "Body",     widget: text }
+              - name: programme
+                label: "2 · Programme"
+                widget: object
+                fields:
+                  - { name: subtitle, label: "Subtitle", widget: string }
+                  - { name: body,     label: "Body",     widget: text }
+              - name: reports
+                label: "3 · Reports"
+                widget: object
+                fields:
+                  - { name: subtitle, label: "Subtitle", widget: string }
+                  - { name: body,     label: "Body",     widget: text }
+          - name: researchIntro
+            label: "Research — intro"
+            widget: object
+            fields:
+              - { name: title,    label: "Title",    widget: string }
+              - { name: subtitle, label: "Subtitle", widget: string }
+              - { name: body,     label: "Body",     widget: text }
+          - name: eventsIntro
+            label: "Events — intro"
+            widget: object
+            fields:
+              - { name: title,    label: "Title",    widget: string }
+              - { name: subtitle, label: "Subtitle", widget: string }
+              - { name: body,     label: "Body",     widget: text }
+          - name: contactsIntro
+            label: "Contacts — intro"
+            widget: object
+            fields:
+              - { name: title,    label: "Title",    widget: string }
+              - { name: subtitle, label: "Subtitle", widget: string }
+              - { name: body,     label: "Body",     widget: text }
+
+  # ============== SITE SETTINGS ==============
+  - name: "site"
+    label: "⚙️ Site settings (contacts, URLs)"
+    files:
+      - name: "site-info"
+        label: "Site information"
+        file: "src/_data/site.json"
+        fields:
+          - { name: title,       label: "Site title", widget: string }
+          - { name: subtitle,    label: "Subtitle",   widget: string }
+          - { name: description, label: "SEO description", widget: text }
+          - { name: url,         label: "Site URL",   widget: string }
+          - { name: projectCode, label: "EU project code", widget: string }
+          - { name: projectStart, label: "Project start date", widget: date, format: "YYYY-MM-DD" }
+          - { name: projectEnd,   label: "Project end date",   widget: date, format: "YYYY-MM-DD" }
+          - { name: coordinator, label: "Coordinator (text)", widget: string }
+          - name: contacts
+            label: "Team contacts"
+            widget: object
+            fields:
+              - name: project
+                label: "Project Manager"
+                widget: object
+                fields:
+                  - { name: name, label: "Name", widget: string }
+                  - { name: role, label: "Role", widget: string }
+                  - { name: email, label: "Email", widget: string }
+              - name: communication
+                label: "Communication Manager"
+                widget: object
+                fields:
+                  - { name: name, label: "Name", widget: string }
+                  - { name: role, label: "Role", widget: string }
+                  - { name: email, label: "Email", widget: string }
+          - name: nationalPlatforms
+            label: "National ART-IN-RES platforms"
+            widget: list
+            fields:
+              - { name: code,  label: "Country code (CZ/SK/HU)", widget: string }
+              - { name: url,   label: "URL", widget: string }
+              - { name: label, label: "Display label", widget: string }
+              - { name: status, label: "Status", widget: select, options: ["live", "preparing"] }
+
+  # ============== SIGNPOST CARDS (5 cards under About) ==============
+  - name: "signpost"
+    label: "🧭 Signpost cards (under About The Project)"
+    folder: "src/content/signpost"
+    create: false
+    delete: false
+    slug: "{{slug}}"
+    fields:
+      - { name: title, label: "Card title", widget: string }
+      - { name: order, label: "Display order", widget: number, value_type: "int" }
+      - { name: link,  label: "Anchor link (e.g. #events)", widget: string }
+      - { name: body,  label: "Short description", widget: markdown }
+
+  # ============== PARTNERS (6 cards in Contacts) ==============
+  - name: "partners"
+    label: "🤝 Partners"
+    folder: "src/content/partners"
+    create: true
+    delete: true
+    slug: "{{order}}-{{slug}}"
+    identifier_field: name
+    fields:
+      - { name: name,         label: "Organisation name", widget: string }
+      - { name: country,      label: "Country (full)",    widget: string }
+      - { name: countryCode,  label: "Country code (ISO)", widget: string, pattern: ['^[A-Z]{2}$', "Must be 2 uppercase letters"] }
+      - { name: role,         label: "Role",              widget: select, options: ["Lead partner", "Partner", "Associated partner"] }
+      - { name: isLead,       label: "Is lead partner?",  widget: boolean, default: false }
+      - { name: website,      label: "Website URL",       widget: string }
+      - { name: websiteLabel, label: "Website display label", widget: string, default: "website" }
+      - { name: order,        label: "Display order",     widget: number, value_type: "int" }
+      - { name: body,         label: "Description",       widget: markdown }
+
+  # ============== PILOT RESIDENCIES ==============
+  - name: "pilots"
+    label: "🎭 Pilot residencies"
+    folder: "src/content/pilots"
+    create: true
+    delete: true
+    slug: "{{order}}-{{countryCode}}-{{slug}}"
+    identifier_field: title
+    fields:
+      - { name: title,       label: "Residency title", widget: string }
+      - { name: model,       label: "Residency model (e.g. Community-Based, Low-Impact Mobility)", widget: string, required: false }
+      - { name: host,        label: "Host organisation",  widget: string }
+      - { name: country,     label: "Country",            widget: string }
+      - { name: countryCode, label: "Country code (ISO)", widget: string, pattern: ['^[A-Z]{2}$', "Must be 2 uppercase letters"] }
+      - { name: startDate,   label: "Start date", widget: date, format: "YYYY-MM-DD" }
+      - { name: endDate,     label: "End date",   widget: date, format: "YYYY-MM-DD" }
+      - { name: status,      label: "Status", widget: select, options: ["Upcoming", "Running", "Completed", "Cancelled"] }
+      - { name: image,       label: "Image / photo", widget: image, required: false }
+      - { name: order,       label: "Display order", widget: number, value_type: "int" }
+      - { name: body,        label: "Description", widget: markdown }
+
+  # ============== EVENTS & NEWS ==============
+  - name: "events"
+    label: "📅 Events & News"
+    folder: "src/content/events"
+    create: true
+    delete: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    identifier_field: title
+    fields:
+      - { name: title,     label: "Event title", widget: string }
+      - { name: date,      label: "Date & time", widget: datetime, format: "YYYY-MM-DD HH:mm" }
+      - { name: venue,     label: "Venue", widget: string, required: false }
+      - { name: city,      label: "City",  widget: string, required: false }
+      - { name: country,   label: "Country", widget: string, required: false }
+      - { name: organiser, label: "Organised by", widget: string }
+      - { name: status,    label: "Status", widget: select, options: ["Upcoming", "Past", "Cancelled"] }
+      - { name: image,     label: "Image / photo", widget: image, required: false }
+      - { name: link,      label: "Link URL (More info / Register)", widget: string, default: "#" }
+      - { name: linkLabel, label: "Link label", widget: string, default: "More info" }
+      - { name: body,      label: "Description", widget: markdown }
+
+  # ============== RESEARCH DOCUMENTS ==============
+  - name: "research"
+    label: "📚 Research outputs"
+    folder: "src/content/research"
+    create: true
+    delete: true
+    slug: "{{order}}-{{slug}}"
+    identifier_field: title
+    fields:
+      - { name: title,    label: "Document title", widget: string }
+      - { name: status,   label: "Status", widget: select, options: ["Available", "In preparation", "Internal — not public", "Ongoing"] }
+      - { name: file,     label: "PDF file", widget: file, required: false }
+      - { name: category, label: "Category", widget: select, options: ["methodology", "strategy", "research-report", "manual", "policy", "press"] }
+      - { name: order,    label: "Display order", widget: number, value_type: "int" }
+      - { name: visible,  label: "Visible on website?", widget: boolean, default: true }
+      - { name: body,     label: "Description", widget: markdown }
+
+  # ============== REPORTS ==============
+  - name: "reports"
+    label: "📊 Reports (artist, host, mentor)"
+    folder: "src/content/reports"
+    create: true
+    delete: true
+    slug: "{{order}}-{{slug}}"
+    identifier_field: title
+    fields:
+      - { name: title,  label: "Report title", widget: string }
+      - { name: type,   label: "Type", widget: select, options: ["Artist", "Host", "Mentor", "Pilot evaluation", "Interim"] }
+      - { name: author, label: "Author", widget: string, required: false }
+      - { name: file,   label: "PDF file", widget: file, required: false }
+      - { name: order,  label: "Display order", widget: number, value_type: "int" }
+      - { name: body,   label: "Short summary", widget: markdown }

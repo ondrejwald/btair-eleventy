@@ -1,0 +1,27 @@
+{
+    "title": "Bridging the A-I-R",
+    "subtitle": "European platform for artistic residencies",
+    "description": "Bridging the A-I-R connects artistic residency practice across six European countries. Explore residency opportunities, practical resources and project updates for artists and host organisations.",
+    "url": "https://btair.eu",
+    "projectCode": "101255130",
+    "projectStart": "2026-02-01",
+    "projectEnd": "2030-01-31",
+    "coordinator": "Nová síť z.s. (CZ)",
+    "contacts": {
+        "project": {
+            "name": "Jan Břeň",
+            "role": "Project Manager",
+            "email": "janbren@novasit.cz"
+        },
+        "communication": {
+            "name": "Magdalena Košárková",
+            "role": "Communication Manager",
+            "email": "magdalenakosarkova@novasit.cz"
+        }
+    },
+    "nationalPlatforms": [
+        { "code": "CZ", "url": "https://artinres.cz", "label": "ART-IN-RES", "status": "live" },
+        { "code": "SK", "url": "https://artinres.sk", "label": "ART-IN-RES", "status": "preparing" },
+        { "code": "HU", "url": "https://artinres.hu", "label": "ART-IN-RES", "status": "preparing" }
+    ]
+}

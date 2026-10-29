@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 40" aria-label="Flag of Slovakia">
+    <rect width="60" height="13.33" fill="#FFFFFF"/>
+    <rect width="60" height="13.33" y="13.33" fill="#0B4EA2"/>
+    <rect width="60" height="13.34" y="26.66" fill="#EE1C25"/>
+    <g>
+        <path d="M 10 8 L 22 8 L 22 24 Q 22 32 16 34 Q 10 32 10 24 Z"
+              fill="#EE1C25" stroke="#FFFFFF" stroke-width="1"/>
+        <path d="M 16 11 L 16 22 M 13 14 L 19 14 M 12 18 L 20 18"
+              stroke="#FFFFFF" stroke-width="1.4" fill="none"/>
+    </g>
+</svg>
