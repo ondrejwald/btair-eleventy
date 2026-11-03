@@ -62,22 +62,24 @@
             opacity: 1;                      /* na hover plná sytost */
         }
 
-        /* === Event / Pilot media — logo instead of photo === */
+        /* === Event / Pilot media — logo on transparent background === */
         .event__media--logo {
-            background: #FFFFFF;
-            border: 1px solid rgba(0, 0, 0, 0.08);
+            background: transparent !important;    /* no white box behind the logo */
+            border: 0 !important;                  /* no dashed outline */
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 18px;
+            padding: 10px;
             min-height: 140px;
         }
         .event__media--logo img {
             max-width: 100%;
-            max-height: 110px;
+            max-height: 120px;
             width: auto;
             height: auto;
             object-fit: contain;
+            /* Allow the logo to blend with any card background colour below */
+            mix-blend-mode: multiply;
         }
 
         /* === Partner logo box in Contacts === */
