@@ -1,13 +1,36 @@
-<!-- This file is included on all pages so Netlify Identity works everywhere -->
-<script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+<!--
+  Netlify Identity — loaded ONLY on the admin page (CMS)
+  and on pages that carry an invite / recovery token in the URL.
+  This prevents the "Powered by Netlify" badge from appearing
+  on the public site.
+-->
 <script>
-    if (window.netlifyIdentity) {
-        window.netlifyIdentity.on("init", user => {
-            if (!user) {
-                window.netlifyIdentity.on("login", () => {
-                    document.location.href = "/admin/";
-                });
-            }
-        });
-    }
+    (function () {
+        var path = window.location.pathname || '';
+        var hash = window.location.hash || '';
+
+        // Only load the Identity widget on /admin/ or when there's an invite/recovery token
+        var isAdmin        = path.indexOf('/admin') === 0;
+        var hasInviteToken = hash.indexOf('invite_token=') !== -1
+                          || hash.indexOf('recovery_token=') !== -1
+                          || hash.indexOf('confirmation_token=') !== -1;
+
+        if (!isAdmin && !hasInviteToken) {
+            return; // Don't load the widget on normal public pages
+        }
+
+        var s = document.createElement('script');
+        s.src = 'https://identity.netlify.com/v1/netlify-identity-widget.js';
+        s.onload = function () {
+            if (!window.netlifyIdentity) return;
+            window.netlifyIdentity.on('init', function (user) {
+                if (!user) {
+                    window.netlifyIdentity.on('login', function () {
+                        document.location.href = '/admin/';
+                    });
+                }
+            });
+        };
+        document.head.appendChild(s);
+    })();
 </script>
