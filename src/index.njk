@@ -8,7 +8,15 @@ layout: base.njk
         <a href="#top" class="brand" aria-label="Bridging the A-I-R — home">
             <img src="{{ '/assets/logos/btair-logo-header.png' | url }}" alt="Bridging the A-I-R" class="brand__logo">
         </a>
-        <nav class="nav" aria-label="Primary">
+
+        <!-- Hamburger toggle for mobile — hidden on desktop via CSS -->
+        <button class="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="primary-nav">
+            <span class="nav-toggle__bar"></span>
+            <span class="nav-toggle__bar"></span>
+            <span class="nav-toggle__bar"></span>
+        </button>
+
+        <nav class="nav" id="primary-nav" aria-label="Primary">
             <a href="#about"       data-section="about">About The Project</a>
             <a href="#web"         data-section="web">Web</a>
             <a href="#residencies" data-section="residencies">Residencies</a>
@@ -262,6 +270,27 @@ layout: base.njk
         });
     }, { rootMargin: "-40% 0px -55% 0px" });
     sections.forEach(sec => observer.observe(sec));
+
+    // Mobile hamburger menu toggle
+    const navToggle = document.querySelector('.nav-toggle');
+    const primaryNav = document.getElementById('primary-nav');
+    if (navToggle && primaryNav) {
+        navToggle.addEventListener('click', () => {
+            const open = primaryNav.classList.toggle('is-open');
+            navToggle.classList.toggle('is-open', open);
+            navToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+            navToggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+        });
+        // Close menu after clicking a nav link (useful on mobile)
+        primaryNav.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                primaryNav.classList.remove('is-open');
+                navToggle.classList.remove('is-open');
+                navToggle.setAttribute('aria-expanded', 'false');
+                navToggle.setAttribute('aria-label', 'Open menu');
+            });
+        });
+    }
 
     // Automatic project timeline calculation
     (function() {

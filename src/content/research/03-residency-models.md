@@ -1,6 +1,6 @@
 ---
 title: "Proposal of 10 Model Scenarios for Residency Practice"
-status: "Available"
+status: "In preparation"
 file: ""
 category: "research-report"
 order: 3

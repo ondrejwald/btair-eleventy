@@ -1,6 +1,6 @@
 ---
 title: "Jointly Approved Manual for Open Call and Selection Criteria"
-status: "Available"
+status: "In preparation"
 file: ""
 category: "manual"
 order: 6

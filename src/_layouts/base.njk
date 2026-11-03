@@ -5,7 +5,89 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ title or site.title }} — {{ site.subtitle }}</title>
     <meta name="description" content="{{ site.description }}">
+
+    <!-- Favicon (brand mark: yellow square with wave) -->
+    <link rel="icon" type="image/svg+xml" href="{{ '/assets/favicon.svg' | url }}">
+    <link rel="apple-touch-icon" href="{{ '/assets/favicon.svg' | url }}">
+
     <link rel="stylesheet" href="{{ '/style.css' | url }}">
+
+    <!-- Mobile hamburger menu + minor doplňky — inline so nothing has to be copied to style.css -->
+    <style>
+        /* Hamburger button — hidden on desktop */
+        .nav-toggle {
+            display: none;
+            background: transparent;
+            border: 0;
+            padding: 10px;
+            cursor: pointer;
+            width: 44px;
+            height: 44px;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            gap: 5px;
+        }
+        .nav-toggle__bar {
+            display: block;
+            width: 22px;
+            height: 2px;
+            background: #111;
+            border-radius: 1px;
+            transition: transform .25s ease, opacity .25s ease;
+        }
+        .nav-toggle.is-open .nav-toggle__bar:nth-child(1) {
+            transform: translateY(7px) rotate(45deg);
+        }
+        .nav-toggle.is-open .nav-toggle__bar:nth-child(2) {
+            opacity: 0;
+        }
+        .nav-toggle.is-open .nav-toggle__bar:nth-child(3) {
+            transform: translateY(-7px) rotate(-45deg);
+        }
+
+        /* On mobile: show hamburger, hide nav by default, show it when .is-open */
+        @media (max-width: 720px) {
+            .nav-toggle {
+                display: flex;
+            }
+            .topbar__inner .nav {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                flex-direction: column;
+                background: rgba(255, 255, 255, 0.98);
+                backdrop-filter: blur(8px);
+                padding: 16px 20px 24px;
+                box-shadow: 0 12px 24px -8px rgba(0, 0, 0, .15);
+                border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+                gap: 2px;
+                z-index: 50;
+            }
+            .topbar__inner .nav.is-open {
+                display: flex;
+            }
+            .topbar__inner .nav a {
+                padding: 12px 4px;
+                font-size: 16px;
+                border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+            }
+            .topbar__inner .nav a:last-child {
+                border-bottom: 0;
+            }
+            .topbar__inner .nav a.is-active::after {
+                left: 4px;
+                right: auto;
+                width: 24px;
+            }
+            /* The topbar needs to be relative so the dropdown positions correctly */
+            .topbar__inner {
+                position: relative;
+            }
+        }
+    </style>
 </head>
 <body>
     {{ content | safe }}
