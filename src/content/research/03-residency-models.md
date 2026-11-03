@@ -1,7 +1,7 @@
 ---
 title: "Proposal of 10 Model Scenarios for Residency Practice"
-status: "In preparation"
-file: ""
+status: "Available"
+file: "/assets/documents/BtAIR-10-Residency-Models.pdf"
 category: "research-report"
 order: 3
 ---

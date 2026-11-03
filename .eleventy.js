@@ -29,6 +29,10 @@ module.exports = function(eleventyConfig) {
         collection.getFilteredByGlob("src/content/signpost/*.md")
                   .sort((a, b) => (a.data.order || 999) - (b.data.order || 999))
     );
+    eleventyConfig.addCollection("models", collection =>
+        collection.getFilteredByGlob("src/content/models/*.md")
+                  .sort((a, b) => (a.data.order || 999) - (b.data.order || 999))
+    );
 
     // Date formatter
     eleventyConfig.addFilter("formatDate", (value, format = "long") => {

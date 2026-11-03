@@ -18,7 +18,7 @@ layout: base.njk
 
         <nav class="nav" id="primary-nav" aria-label="Primary">
             <a href="#about"       data-section="about">About The Project</a>
-            <a href="#web"         data-section="web">Web</a>
+            <a href="#web"         data-section="web">Find a residency</a>
             <a href="#residencies" data-section="residencies">Residencies</a>
             <a href="#research"    data-section="research">Research</a>
             <a href="#events"      data-section="events">Events</a>
@@ -70,7 +70,7 @@ layout: base.njk
 
         <ul class="airlinks">
             {%- for platform in site.nationalPlatforms %}
-            <li><a class="airlink{% if platform.status != 'live' %} airlink--preparing{% endif %}" href="{{ platform.url }}">
+            <li><a class="airlink{% if platform.status != 'live' %} airlink--preparing{% endif %}" href="{{ platform.url }}" target="_blank" rel="noopener">
                 <span class="airlink__code">{{ platform.code }}</span>
                 <span class="airlink__name">{{ platform.label }}</span>
                 <img class="airlink__flag" src="{{ ('/assets/flags/' + (platform.code | lower) + '.svg') | url }}" alt="" aria-hidden="true">
@@ -92,6 +92,46 @@ layout: base.njk
 
         <h3 class="section__sub-title" id="res-models">{{ sections.residenciesIntro.models.subtitle }}</h3>
         <p class="section__lede">{{ sections.residenciesIntro.models.body }}</p>
+
+        <!-- 4 pilot-tested models — square cards -->
+        <ul class="models">
+            {%- for model in collections.models %}
+            <li class="model">
+                <span class="model__badge">Pilot tested</span>
+                <h4 class="model__title">{{ model.data.title }}</h4>
+                <div class="model__desc">{{ model.templateContent | safe }}</div>
+            </li>
+            {%- endfor %}
+        </ul>
+
+        <p class="section__lede section__lede--small">
+            The full proposal of ten residency models — including those not selected for pilot testing — is available as an open-access publication.
+        </p>
+
+        <ul class="doc-list">
+            <li class="doc-row">
+                <span class="doc-row__type">PDF</span>
+                <div class="doc-row__body">
+                    <h3 class="doc-row__title">Proposal of 10 Model Scenarios for Residency Practice</h3>
+                </div>
+                <div class="doc-row__actions">
+                    <a href="{{ '/assets/documents/BtAIR-10-Residency-Models.pdf' | url }}" target="_blank" rel="noopener">Preview</a>
+                    <span>/</span>
+                    <a href="{{ '/assets/documents/BtAIR-10-Residency-Models.pdf' | url }}" download>Download</a>
+                </div>
+            </li>
+            <li class="doc-row">
+                <span class="doc-row__type">PDF</span>
+                <div class="doc-row__body">
+                    <h3 class="doc-row__title">Jointly Approved Manual for Open Call and Selection Criteria</h3>
+                </div>
+                <div class="doc-row__actions">
+                    <a href="{{ '/assets/documents/BtAIR-Open-Call-Manual.pdf' | url }}" target="_blank" rel="noopener">Preview</a>
+                    <span>/</span>
+                    <a href="{{ '/assets/documents/BtAIR-Open-Call-Manual.pdf' | url }}" download>Download</a>
+                </div>
+            </li>
+        </ul>
 
         <h3 class="section__sub-title" id="res-programme">{{ sections.residenciesIntro.programme.subtitle }}</h3>
         <p class="section__lede">{{ sections.residenciesIntro.programme.body }}</p>
@@ -129,7 +169,7 @@ layout: base.njk
             <li class="output">
                 <h3 class="output__title">{{ report.data.title }}</h3>
                 <div class="output__desc">{{ report.templateContent | safe }}</div>
-                {% if report.data.file %}<a class="output__action" href="{{ report.data.file }}">Open document →</a>{% endif %}
+                {% if report.data.file %}<a class="output__action" href="{{ report.data.file | url }}" target="_blank" rel="noopener">Open document →</a>{% endif %}
             </li>
             {%- endfor %}
         </ul>
@@ -151,7 +191,7 @@ layout: base.njk
                     {% if item.data.status %}<span class="output__status output__status--{{ item.data.status | lower | replace(' ', '-') }}">{{ item.data.status }}</span>{% endif %}
                 </h3>
                 <div class="output__desc">{{ item.templateContent | safe }}</div>
-                {% if item.data.file %}<a class="output__action" href="{{ item.data.file }}">Open document →</a>{% endif %}
+                {% if item.data.file %}<a class="output__action" href="{{ item.data.file | url }}" target="_blank" rel="noopener">Open document →</a>{% endif %}
             </li>
             {% endif %}
             {%- endfor %}
@@ -180,7 +220,7 @@ layout: base.njk
                     <h4 class="event__title">{{ event.data.title }}</h4>
                     {% if event.data.organiser %}<p class="event__org">Organised by {{ event.data.organiser }}</p>{% endif %}
                     <div class="event__desc">{{ event.templateContent | safe }}</div>
-                    {% if event.data.link and event.data.link != "#" %}<a class="event__cta" href="{{ event.data.link }}">{{ event.data.linkLabel }} →</a>{% endif %}
+                    {% if event.data.link and event.data.link != "#" %}<a class="event__cta" href="{{ event.data.link }}" target="_blank" rel="noopener">{{ event.data.linkLabel }} →</a>{% endif %}
                 </div>
                 <span class="event__badge">{{ event.data.date | formatDate("short") }}</span>
             </li>
@@ -201,7 +241,7 @@ layout: base.njk
             <li class="partner{% if partner.data.isLead %} partner--lead{% endif %}">
                 <header class="partner__head">
                     <span class="partner__role">{{ partner.data.role }}{% if not partner.data.isLead %} · {{ partner.data.countryCode }}{% endif %}</span>
-                    <a class="partner__site" href="{{ partner.data.website }}">{{ partner.data.websiteLabel }} →</a>
+                    <a class="partner__site" href="{{ partner.data.website }}" target="_blank" rel="noopener">{{ partner.data.websiteLabel }} →</a>
                 </header>
                 <div class="partner__body">
                     <h3 class="partner__name">{{ partner.data.name }}</h3>

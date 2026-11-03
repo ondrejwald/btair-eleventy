@@ -1,6 +1,6 @@
 ---
-title: "Open Calls: Residencies in Spain and Czechia"
-date: "2027-05-01"
+title: "Open Calls Launch: Residencies in Spain and Czechia"
+date: "2026-11-09"
 venue: "Online"
 city: ""
 country: ""
@@ -10,4 +10,4 @@ image: ""
 link: "#"
 linkLabel: "More info"
 ---
-Two opportunities for May 2027: a Community-Based residency in Spain for applicants from Czechia, and a Community-Based residency in Czechia for applicants from Spain. Each call includes details on dates, host venue, selection criteria and expectations. Open calls will be posted on the national ART-IN-RES platforms and here on btair.eu.
+Opening of two calls for May 2027 pilot residencies: a Community-Based residency in Spain for artists from Czechia, and a Community-Based residency in Czechia for artists from Spain. Full details — host venues, selection criteria, support and dates — will be published in the week of 9 November 2026 on the national ART-IN-RES platforms and here on btair.eu.

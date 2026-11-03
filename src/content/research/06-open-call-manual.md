@@ -1,7 +1,7 @@
 ---
 title: "Jointly Approved Manual for Open Call and Selection Criteria"
-status: "In preparation"
-file: ""
+status: "Available"
+file: "/assets/documents/BtAIR-Open-Call-Manual.pdf"
 category: "manual"
 order: 6
 ---

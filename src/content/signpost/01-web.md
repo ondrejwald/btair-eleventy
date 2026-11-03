@@ -1,6 +1,6 @@
 ---
-title: Web
+title: Find a residency
 order: 1
 link: "#web"
 ---
-Find residency information through our national ART-IN-RES platforms.
+Explore national ART-IN-RES platforms where artists find residency opportunities and host organisations publish their calls.

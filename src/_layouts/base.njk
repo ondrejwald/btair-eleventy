@@ -46,10 +46,77 @@
             transform: translateY(-7px) rotate(-45deg);
         }
 
+        /* === Residency model cards (4 pilot-tested models) === */
+        .models {
+            list-style: none;
+            padding: 0;
+            margin: 20px 0 40px;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 18px;
+        }
+        .model {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            padding: 24px 24px 22px;
+            background: #F6F5F0;
+            border: 1px solid rgba(0, 0, 0, 0.06);
+            border-radius: 3px;
+            transition: background .25s ease, transform .25s ease, box-shadow .25s ease;
+            min-height: 220px;
+        }
+        .model:hover {
+            background: #FFF2BD;
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px -8px rgba(0, 0, 0, .12);
+        }
+        .model__badge {
+            display: inline-block;
+            align-self: flex-start;
+            margin-bottom: 14px;
+            padding: 3px 10px;
+            font-family: inherit;
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: #000;
+            background: #FFD433;
+            border-radius: 2px;
+        }
+        .model__title {
+            font-weight: 700;
+            font-size: 20px;
+            line-height: 1.2;
+            margin: 0 0 10px;
+            color: #000;
+        }
+        .model__desc {
+            font-size: 14.5px;
+            line-height: 1.55;
+            color: #333;
+        }
+        .model__desc p { margin: 0; }
+
+        /* Smaller lead text under models */
+        .section__lede--small {
+            font-size: 15px;
+            margin-top: 10px;
+            margin-bottom: 18px;
+            color: #555;
+        }
+
         /* On mobile: show hamburger, hide nav by default, show it when .is-open */
         @media (max-width: 720px) {
             .nav-toggle {
                 display: flex;
+            }
+            .models {
+                grid-template-columns: 1fr;
+            }
+            .model {
+                min-height: auto;
             }
             .topbar__inner .nav {
                 display: none;
