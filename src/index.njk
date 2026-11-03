@@ -35,6 +35,20 @@ layout: base.njk
     <section class="section" id="about">
         <p class="section__meta">{{ sections.about.meta }}</p>
 
+        <h1 class="section__title">{{ sections.about.title }}</h1>
+
+        <p class="section__lede">{{ sections.about.body }}</p>
+
+        <ul class="signpost">
+            {%- for card in collections.signpost %}
+            <li><a class="signpost__card" href="{{ card.data.link }}">
+                <h3>{{ card.data.title }}</h3>
+                <div class="signpost__card-body">{{ card.templateContent | safe }}</div>
+            </a></li>
+            {%- endfor %}
+        </ul>
+
+        <!-- Project timeline moved below the welcoming content -->
         <div class="timeline" aria-label="Project timeline 2026–2030">
             <div class="timeline__row">
                 <span class="timeline__date">1 Feb 2026</span>
@@ -48,19 +62,6 @@ layout: base.njk
                 <span>Year 1</span><span>Year 2</span><span>Year 3</span><span>Year 4</span>
             </div>
         </div>
-
-        <h1 class="section__title">{{ sections.about.title }}</h1>
-
-        <p class="section__lede">{{ sections.about.body }}</p>
-
-        <ul class="signpost">
-            {%- for card in collections.signpost %}
-            <li><a class="signpost__card" href="{{ card.data.link }}">
-                <h3>{{ card.data.title }}</h3>
-                <div class="signpost__card-body">{{ card.templateContent | safe }}</div>
-            </a></li>
-            {%- endfor %}
-        </ul>
     </section>
 
     <!-- ===== 2. WEB SIGNPOST ===== -->
@@ -120,17 +121,6 @@ layout: base.njk
                     <a href="{{ '/assets/documents/BtAIR-10-Residency-Models.pdf' | url }}" download>Download</a>
                 </div>
             </li>
-            <li class="doc-row">
-                <span class="doc-row__type">PDF</span>
-                <div class="doc-row__body">
-                    <h3 class="doc-row__title">Jointly Approved Manual for Open Call and Selection Criteria</h3>
-                </div>
-                <div class="doc-row__actions">
-                    <a href="{{ '/assets/documents/BtAIR-Open-Call-Manual.pdf' | url }}" target="_blank" rel="noopener">Preview</a>
-                    <span>/</span>
-                    <a href="{{ '/assets/documents/BtAIR-Open-Call-Manual.pdf' | url }}" download>Download</a>
-                </div>
-            </li>
         </ul>
 
         <h3 class="section__sub-title" id="res-programme">{{ sections.residenciesIntro.programme.subtitle }}</h3>
@@ -140,15 +130,15 @@ layout: base.njk
         <ul class="events">
             {%- for pilot in collections.pilots %}
             <li class="event event--{{ pilot.data.status | lower }}">
-                <figure class="event__media">
+                <figure class="event__media event__media--logo">
                     {% if pilot.data.image %}
-                        <img src="{{ pilot.data.image }}" alt="{{ pilot.data.title }}">
+                        <img src="{{ pilot.data.image | url }}" alt="{{ pilot.data.host }}">
                     {% else %}
                         <span>Photo or graphic<br>of the residency</span>
                     {% endif %}
                 </figure>
                 <div class="event__body">
-                    <span class="event__date">{{ pilot.data.startDate | formatDate }} – {{ pilot.data.endDate | formatDate }} · {{ pilot.data.country }}</span>
+                    <span class="event__date">{{ pilot.data.dateLabel or (pilot.data.startDate | formatDate) }} · {{ pilot.data.country }}</span>
                     <h4 class="event__title">{{ pilot.data.title }}</h4>
                     <p class="event__org">Hosted by {{ pilot.data.host }}{% if pilot.data.model %} · {{ pilot.data.model }}{% endif %}</p>
                     <div class="event__desc">{{ pilot.templateContent | safe }}</div>
@@ -244,6 +234,11 @@ layout: base.njk
                     <a class="partner__site" href="{{ partner.data.website }}" target="_blank" rel="noopener">{{ partner.data.websiteLabel }} →</a>
                 </header>
                 <div class="partner__body">
+                    {% if partner.data.logo %}
+                    <figure class="partner__logo-box">
+                        <img src="{{ partner.data.logo | url }}" alt="{{ partner.data.name }}" class="partner__logo">
+                    </figure>
+                    {% endif %}
                     <h3 class="partner__name">{{ partner.data.name }}</h3>
                     <p class="partner__country">{{ partner.data.country }}</p>
                     <div class="partner__desc">{{ partner.templateContent | safe }}</div>
