@@ -63,28 +63,35 @@
         }
 
         /* === Event / Pilot media — logo on transparent background === */
-        .event__media--logo {
-            background: transparent !important;    /* no white box behind the logo */
-            border: 0 !important;                  /* no dashed outline */
-            display: flex;
-            align-items: center;                   /* vertical center */
-            justify-content: center;               /* horizontal center */
-            padding: 16px 20px;
-            min-height: 120px;
+        /* Use high-specificity selectors + !important to override anything from style.css */
+        .event .event__media.event__media--logo,
+        figure.event__media--logo {
+            background: transparent !important;
+            background-color: transparent !important;
+            background-image: none !important;
+            border: 0 !important;
+            border-color: transparent !important;
+            box-shadow: none !important;
+            outline: 0 !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            padding: 16px 20px !important;
+            min-height: 120px !important;
             width: 100%;
             box-sizing: border-box;
-            overflow: hidden;                      /* nothing overflows outside the box */
+            overflow: hidden;
         }
         .event__media--logo img {
             display: block;
-            max-width: 80%;                        /* smaller — leaves breathing space */
-            max-height: 70px;                      /* smaller than before (was 120px) */
+            max-width: 80%;
+            max-height: 70px;
             width: auto;
             height: auto;
             object-fit: contain;
-            margin: 0 auto;                        /* belt-and-suspenders centering */
-            /* Allow the logo to blend with any card background colour below */
+            margin: 0 auto;
             mix-blend-mode: multiply;
+            background: transparent;
         }
 
         /* === Partner logo box in Contacts === */

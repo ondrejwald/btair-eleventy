@@ -39,7 +39,7 @@ module.exports = function(eleventyConfig) {
         const d = new Date(value);
         if (isNaN(d)) return value;
         if (format === "short") {
-            return d.toLocaleDateString("en-GB", { day: "numeric", month: "numeric" }) + ".";
+            return d.toLocaleDateString("en-GB", { day: "numeric", month: "numeric" });
         }
         return d.toLocaleDateString("en-GB", {
             weekday: "short", day: "numeric", month: "long", year: "numeric"

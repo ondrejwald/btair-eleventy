@@ -1,6 +1,6 @@
 ---
 name: "Nová síť z.s."
-country: "Czech Republic"
+country: "Czechia"
 countryCode: "CZ"
 role: "Lead partner"
 isLead: true
