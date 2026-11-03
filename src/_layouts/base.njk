@@ -67,17 +67,22 @@
             background: transparent !important;    /* no white box behind the logo */
             border: 0 !important;                  /* no dashed outline */
             display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 10px;
-            min-height: 140px;
+            align-items: center;                   /* vertical center */
+            justify-content: center;               /* horizontal center */
+            padding: 16px 20px;
+            min-height: 120px;
+            width: 100%;
+            box-sizing: border-box;
+            overflow: hidden;                      /* nothing overflows outside the box */
         }
         .event__media--logo img {
-            max-width: 100%;
-            max-height: 120px;
+            display: block;
+            max-width: 80%;                        /* smaller — leaves breathing space */
+            max-height: 70px;                      /* smaller than before (was 120px) */
             width: auto;
             height: auto;
             object-fit: contain;
+            margin: 0 auto;                        /* belt-and-suspenders centering */
             /* Allow the logo to blend with any card background colour below */
             mix-blend-mode: multiply;
         }
