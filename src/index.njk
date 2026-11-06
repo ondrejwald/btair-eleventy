@@ -37,13 +37,7 @@ layout: base.njk
 
         <h1 class="section__title">{{ sections.about.title }}</h1>
 
-        <div class="about-grid">
-            <p class="section__lede about-grid__text">{{ sections.about.body }}</p>
-            <figure class="about-grid__lead-partner" aria-label="Lead partner: Nová síť">
-                <img src="{{ '/assets/logos/nova-sit.svg' | url }}" alt="Nová síť z.s.">
-                <figcaption>Lead partner</figcaption>
-            </figure>
-        </div>
+        <p class="section__lede">{{ sections.about.body }}</p>
 
         <ul class="signpost">
             {%- for card in collections.signpost %}
@@ -201,24 +195,29 @@ layout: base.njk
 
         {% if collections.events.length %}
         <h3 class="events__subhead">Upcoming programme</h3>
-        <ul class="events">
+        <ul class="events events--stacked">
             {%- for event in collections.events %}
-            <li class="event event--{{ event.data.status | lower }}">
-                <figure class="event__media{% if event.data.image %} event__media--poster{% endif %}">
-                    {% if event.data.image %}
-                        <img src="{{ event.data.image | url }}" alt="{{ event.data.title }}">
-                    {% else %}
-                        <span>Photo or graphic<br>of the event</span>
-                    {% endif %}
+            <li class="event-card event-card--{{ event.data.status | lower }}">
+                {% if event.data.image %}
+                <figure class="event-card__poster">
+                    <img src="{{ event.data.image | url }}" alt="{{ event.data.title }}" loading="lazy">
                 </figure>
-                <div class="event__body">
-                    <span class="event__date">{{ event.data.date | formatDate }}{% if event.data.timeLabel %} · {{ event.data.timeLabel }}{% endif %}{% if event.data.city %} · {{ event.data.city }}{% endif %}{% if event.data.venue %} · {{ event.data.venue }}{% endif %}</span>
-                    <h4 class="event__title">{{ event.data.title }}</h4>
-                    {% if event.data.organiser %}<p class="event__org">Organised by {{ event.data.organiser }}</p>{% endif %}
-                    <div class="event__desc">{{ event.templateContent | safe }}</div>
-                    {% if event.data.link and event.data.link != "#" %}<a class="event__cta" href="{{ event.data.link }}" target="_blank" rel="noopener">{{ event.data.linkLabel }} →</a>{% endif %}
+                {% endif %}
+                <div class="event-card__body">
+                    <span class="event-card__date">
+                        {{ event.data.date | formatDate }}{% if event.data.timeLabel %} · {{ event.data.timeLabel }}{% endif %}{% if event.data.city %} · {{ event.data.city }}{% endif %}
+                    </span>
+                    <h4 class="event-card__title">{{ event.data.title }}</h4>
+                    {% if event.data.organiser %}<p class="event-card__org">Organised by {{ event.data.organiser }}{% if event.data.venue %} · {{ event.data.venue }}{% endif %}</p>{% endif %}
+
+                    <details class="event-card__details">
+                        <summary>Read more</summary>
+                        <div class="event-card__desc">{{ event.templateContent | safe }}</div>
+                        {% if event.data.link and event.data.link != "#" %}
+                        <a class="event-card__cta" href="{{ event.data.link }}" target="_blank" rel="noopener">{{ event.data.linkLabel }} →</a>
+                        {% endif %}
+                    </details>
                 </div>
-                <span class="event__badge">{{ event.data.date | formatDate("short") }}</span>
             </li>
             {%- endfor %}
         </ul>
