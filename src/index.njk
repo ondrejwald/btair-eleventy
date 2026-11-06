@@ -199,7 +199,7 @@ layout: base.njk
             {%- for event in collections.events %}
             <li class="event-card event-card--{{ event.data.status | lower }}">
                 {% if event.data.image %}
-                <figure class="event-card__poster">
+                <figure class="event-card__poster{% if event.data.imageIsLogo %} event-card__poster--logo{% endif %}">
                     <img src="{{ event.data.image | url }}" alt="{{ event.data.title }}" loading="lazy">
                 </figure>
                 {% endif %}

@@ -88,7 +88,25 @@
             min-height: 120px;
             object-fit: cover;
             object-position: center;
-        }
+        }.event-card__poster--logo {
+    aspect-ratio: auto;
+    min-height: 140px;
+    padding: 20px 24px;
+    background: #FFFFFF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+}
+.event-card__poster--logo img {
+    max-width: 70%;
+    max-height: 90px;
+    width: auto;
+    height: auto;
+    min-height: 0;
+    object-fit: contain;
+    mix-blend-mode: multiply;
+}
         .event-card__body {
             padding: 20px 22px 22px;
             display: flex;

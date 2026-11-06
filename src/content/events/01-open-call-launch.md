@@ -7,6 +7,7 @@ country: ""
 organiser: "Bridging the A-I-R project partners"
 status: "Upcoming"
 image: "/assets/logos/btair-logo-header.png"
+imageIsLogo: true
 link: "#"
 linkLabel: "More info"
 ---
