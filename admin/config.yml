@@ -188,7 +188,8 @@ collections:
     identifier_field: title
     fields:
       - { name: title,     label: "Event title", widget: string }
-      - { name: date,      label: "Date & time", widget: datetime, format: "YYYY-MM-DD HH:mm" }
+      - { name: date,      label: "Date (YYYY-MM-DD)", widget: date, format: "YYYY-MM-DD" }
+      - { name: timeLabel, label: "Time label (optional, e.g. '17:00–19:00')", widget: string, required: false }
       - { name: venue,     label: "Venue", widget: string, required: false }
       - { name: city,      label: "City",  widget: string, required: false }
       - { name: country,   label: "Country", widget: string, required: false }

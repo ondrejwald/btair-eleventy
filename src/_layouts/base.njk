@@ -46,6 +46,58 @@
             transform: translateY(-7px) rotate(-45deg);
         }
 
+        /* === About grid: text left, lead partner logo right === */
+        .about-grid {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) 220px;
+            gap: 40px;
+            align-items: start;
+            margin-bottom: 48px;
+        }
+        .about-grid__text {
+            margin: 0;
+        }
+        .about-grid__lead-partner {
+            margin: 0;
+            padding: 24px 20px;
+            background: #FFF2BD;        /* light yellow — subtle brand accent */
+            border-radius: 3px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        .about-grid__lead-partner img {
+            max-width: 100%;
+            max-height: 80px;
+            width: auto;
+            height: auto;
+            mix-blend-mode: multiply;
+        }
+        .about-grid__lead-partner figcaption {
+            font-family: inherit;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: #000;
+            opacity: 0.6;
+        }
+        @media (max-width: 720px) {
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            .about-grid__lead-partner {
+                padding: 18px;
+            }
+            .about-grid__lead-partner img {
+                max-height: 60px;
+            }
+        }
+
         /* === ARTINRES flags — smaller, rounded, less prominent === */
         .airlink__flag {
             width: 22px !important;
@@ -60,6 +112,26 @@
         }
         .airlink:hover .airlink__flag {
             opacity: 1;                      /* na hover plná sytost */
+        }
+
+        /* === Event poster image (full visible poster) === */
+        .event__media--poster {
+            background: #FFFFFF !important;
+            border: 1px solid rgba(0, 0, 0, 0.08) !important;
+            overflow: hidden !important;
+            padding: 0 !important;
+            min-height: 180px !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+        }
+        .event__media--poster img {
+            display: block;
+            width: 100%;
+            height: auto;
+            max-height: 240px;
+            object-fit: cover;
+            object-position: center;
         }
 
         /* === Event / Pilot media — logo on transparent background === */
