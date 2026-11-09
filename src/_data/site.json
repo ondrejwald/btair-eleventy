@@ -21,7 +21,7 @@
     },
     "nationalPlatforms": [
         { "code": "CZ", "url": "https://artinres.cz", "label": "ART-IN-RES", "status": "live" },
-        { "code": "SK", "url": "https://artinres.sk", "label": "ART-IN-RES", "status": "preparing" },
+        { "code": "SK", "url": "https://artinres.sk", "label": "ART-IN-RES", "status": "live" },
         { "code": "HU", "url": "https://artinres.hu", "label": "ART-IN-RES", "status": "preparing" }
     ]
 }
