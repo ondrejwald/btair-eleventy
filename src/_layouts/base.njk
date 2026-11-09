@@ -396,20 +396,36 @@
             }
         }
      /* === Hide any "Powered by Netlify" widget that might render === */
+/* === Hide any "Powered by Netlify" injected elements === */
+/* Netlify Identity widget */
 #netlify-identity-widget,
 [id*="netlify-identity-widget"],
 .netlify-identity-widget,
 .netlify-identity-widget-container,
 .netlify-identity-menu,
 iframe[src*="identity.netlify.com"],
-div[style*="netlify"][style*="Powered"] {
+/* Netlify "Deploy your own" promo banner — new in 2026 */
+#nl-badge,
+#nl-card,
+#nl-hero,
+#nl-hero-logo,
+.nl-card,
+.nl-hero,
+.nl-hero-logo,
+.nl-btn,
+[id^="nl-"],
+[class^="nl-"] {
     display: none !important;
     visibility: hidden !important;
     opacity: 0 !important;
     pointer-events: none !important;
     height: 0 !important;
     width: 0 !important;
-}   
+    position: absolute !important;
+    left: -9999px !important;
+}
+
+Pak:   
     </style>
 </head>
 <body>
