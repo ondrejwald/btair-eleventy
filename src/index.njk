@@ -91,7 +91,7 @@ layout: base.njk
 
         <ul class="airlinks">
             {%- for platform in site.nationalPlatforms %}
-            <li><a class="airlink{% if platform.status != 'live' %} airlink--preparing{% endif %}" href="{{ platform.url }}" target="_blank" rel="noopener">
+            <li><a class="airlink{% if platform.status != 'live' %} airlink--preparing{% endif %}"{% if platform.status == 'live' %} href="{{ platform.url }}" target="_blank" rel="noopener"{% endif %}>
                 <span class="airlink__code">{{ platform.code }}</span>
                 <span class="airlink__name">{{ platform.label }}</span>
                 <img class="airlink__flag" src="{{ ('/assets/flags/' + (platform.code | lower) + '.svg') | url }}" alt="" aria-hidden="true">
