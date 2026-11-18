@@ -923,7 +923,7 @@ em     { font-style: italic; }
    ---------------------------------------------------------- */
 
 .footer {
-    background: var(--c-black);
+    background: #4E67AC;
     color: var(--c-white);
     padding: clamp(50px, 6vw, 80px) 0 30px;
     margin-top: 60px;
