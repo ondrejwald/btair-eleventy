@@ -1,14 +1,18 @@
 ---
-title: "Community-Based Residency in Spain"
+title: "Community-Based Residency in Sant Mateu"
 model: "Community-Based"
-host: "Inestable"
+host: "Projecte Somiatruites (co-hosted by Inestable)"
 country: "Spain"
 countryCode: "ES"
 dateLabel: "May 2027"
-startDate: "2027-05-01"
-endDate: "2027-05-31"
+startDate: "2027-05-03"
+endDate: "2027-05-16"
 status: "Upcoming"
-image: "/assets/partner-logos/inestable.png"
+image: "/assets/pilot-images/pilot-sant-mateu-2027.jpg"
 order: 1
 ---
-A community-based residency hosted in Spain in May 2027, open to artists based in Czechia. The programme supports creative work through dialogue with the local community, with on-site mediation and translation support. Open Call with full details will be published in the week of 9 November 2026.
+A 14-day community-based residency in **Sant Mateu**, a 2,000-resident historic rural town in the Castellón region of Spain. Up to 5 Czech-based performing and live artists co-create with local partners — traditional game preservation societies, folk music groups, youth associations, schools and amateur theatre — through authentic dialogue, listening and shared creation.
+
+Hosted by **Projecte Somiatruites** with support from a full-time local cultural mediator and Spanish–English translator. Workspaces include a linoleum-floor studio and Sant Mateu's 293-seat Municipal Auditorium. Family and caregiver support available at no extra cost.
+
+**Open Call for Czech-based artists** → see Events & News (deadline 11 January 2027)

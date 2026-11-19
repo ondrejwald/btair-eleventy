@@ -11,7 +11,13 @@ module.exports = function(eleventyConfig) {
     );
     eleventyConfig.addCollection("events", collection =>
         collection.getFilteredByGlob("src/content/events/*.md")
-                  .sort((a, b) => new Date(b.data.date) - new Date(a.data.date))
+                  .sort((a, b) => {
+    const aOC = a.data.category === "open-call";
+    const bOC = b.data.category === "open-call";
+    if (aOC && !bOC) return -1;
+    if (bOC && !aOC) return 1;
+    return new Date(a.data.date) - new Date(b.data.date);
+})
     );
     eleventyConfig.addCollection("research", collection =>
         collection.getFilteredByGlob("src/content/research/*.md")

@@ -214,11 +214,14 @@ layout: base.njk
         <p class="section__lede">{{ sections.eventsIntro.body }}</p>
 
         {% if collections.events.length %}
-        <h3 class="events__subhead">Upcoming programme</h3>
+        <h3 class="events__subhead">Latest news &amp; upcoming events</h3>
         <ul class="events events--stacked">
             {%- for event in collections.events %}
-            <li class="event-card event-card--{{ event.data.status | lower }}">
-                {% if event.data.image %}
+            <li class="event-card event-card--{{ event.data.status | lower }}{% if event.data.category == 'open-call' %} event-card--open-call{% endif %}">
+    {% if event.data.category == 'open-call' %}
+    <span class="event-card__tag">Open call</span>
+    {% endif %}
+    {% if event.data.image %}
                 <figure class="event-card__poster{% if event.data.imageIsLogo %} event-card__poster--logo{% endif %}">
                     <img src="{{ event.data.image | url }}" alt="{{ event.data.title }}" loading="lazy">
                 </figure>

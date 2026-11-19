@@ -7,11 +7,12 @@ city: "Martínkovice, Broumov region"
 country: "Czechia"
 organiser: "Inestable & Nová síť"
 status: "Upcoming"
+category: "open-call"
 image: "/assets/event-images/open-call-hoprich-2027.jpg"
 link: "https://inestable.es/wp-content/uploads/2026/11/BtAIR_Crossdisciplinary-residency_ENG.pdf"
 linkLabel: "Open call details & apply (PDF)"
 ---
-Inestable and Nová síť invite **Spain-based performing and live arts creators** to apply for a fully funded 14-day residency at Fara Hoprich, a Baroque former rectory in Martínkovice, Broumov borderland (May 2027, dates flexible).
+Inestable and Nová síť invite **Spain-based performing and live arts creators** to apply for a fully funded 14-day residency at Fara Hoprich, a Baroque former rectory in Martínkovice, Broumov borderland (May 2027).
 
 This residency is cross-disciplinary and site-specific — proposals should engage with the rectory's courtyard and surroundings rather than conventional theatre or dance stages. Suggested thematic areas include architecture and landscape, performative reading and writing, ecology, living heritage, food anthropology and community work.
 
