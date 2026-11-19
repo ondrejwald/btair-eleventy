@@ -147,25 +147,29 @@ layout: base.njk
         <p class="section__lede">{{ sections.residenciesIntro.programme.body }}</p>
 
         {% if collections.pilots.length %}
-        <ul class="events">
-            {%- for pilot in collections.pilots %}
-            <li class="event event--{{ pilot.data.status | lower }}">
-                <figure class="event__media event__media--logo">
-                    {% if pilot.data.image %}
-                        <img src="{{ pilot.data.image | url }}" alt="{{ pilot.data.host }}">
-                    {% else %}
-                        <span>Photo or graphic<br>of the residency</span>
-                    {% endif %}
-                </figure>
-                <div class="event__body">
-                    <span class="event__date">{{ pilot.data.dateLabel or (pilot.data.startDate | formatDate) }} · {{ pilot.data.country }}</span>
-                    <h4 class="event__title">{{ pilot.data.title }}</h4>
-                    <p class="event__org">Hosted by {{ pilot.data.host }}{% if pilot.data.model %} · {{ pilot.data.model }}{% endif %}</p>
-                    <div class="event__desc">{{ pilot.templateContent | safe }}</div>
-                </div>
-            </li>
-            {%- endfor %}
-        </ul>
+       <ul class="events events--stacked">
+    {%- for pilot in collections.pilots %}
+    <li class="event-card event-card--{{ pilot.data.status | lower }}">
+        {% if pilot.data.image %}
+        <figure class="event-card__poster">
+            <img src="{{ pilot.data.image | url }}" alt="{{ pilot.data.title }}" loading="lazy">
+        </figure>
+        {% endif %}
+        <div class="event-card__body">
+            <span class="event-card__date">{{ pilot.data.dateLabel or (pilot.data.startDate | formatDate) }} · {{ pilot.data.country }}</span>
+            <h4 class="event-card__title">{{ pilot.data.title }}</h4>
+            <p class="event-card__org">Hosted by {{ pilot.data.host }}{% if pilot.data.model %} · {{ pilot.data.model }}{% endif %}</p>
+            <details class="event-card__details">
+                <summary>Read more</summary>
+                <div class="event-card__desc">{{ pilot.templateContent | safe }}</div>
+            </details>
+            {% if pilot.data.openCallLink %}
+            <a class="event-card__cta" href="{{ pilot.data.openCallLink }}">{{ pilot.data.openCallLinkLabel or "See Open Call →" }}</a>
+            {% endif %}
+        </div>
+    </li>
+    {%- endfor %}
+</ul>
         {% else %}
         <p class="empty-state">Pilot residencies will appear here once confirmed.</p>
         {% endif %}
@@ -217,7 +221,7 @@ layout: base.njk
         <h3 class="events__subhead">Latest news &amp; upcoming events</h3>
         <ul class="events events--stacked">
             {%- for event in collections.events %}
-            <li class="event-card event-card--{{ event.data.status | lower }}{% if event.data.category == 'open-call' %} event-card--open-call{% endif %}">
+            <li class="event-card event-card--{{ event.data.status | lower }}{% if event.data.category == 'open-call' %} event-card--open-call{% endif %}" id="event-{{ event.fileSlug }}">
     {% if event.data.category == 'open-call' %}
     <span class="event-card__tag">Open call</span>
     {% endif %}

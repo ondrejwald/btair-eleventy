@@ -10,6 +10,8 @@ endDate: "2027-05-31"
 status: "Upcoming"
 image: "/assets/pilot-images/pilot-hoprich-2027.jpg"
 order: 2
+openCallLink: "#event-05-open-call-hoprich"
+openCallLinkLabel: "See the Open Call for this residency →"
 ---
 A 14-day cross-disciplinary, site-specific residency at **Fara Hoprich**, a Baroque former rectory in Martínkovice, Broumov borderland (Czech–Polish border region). Up to 5 Spain-based performing and live artists work with the rectory's courtyard and surroundings rather than conventional theatre or dance stages.
 
