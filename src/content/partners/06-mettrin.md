@@ -9,4 +9,4 @@ websiteLabel: "mettrin.hu"
 logo: "/assets/partner-logos/mettrin.png"
 order: 6
 ---
-METTRIN Arts Center is an arts venue in Bánk, Hungary, providing space for cultural activities and exchange. Within Bridging the A-I-R, METTRIN coordinates the Hungarian ART-IN-RES platform and will host pilot residencies and public events.
+METTRIN Arts Center is situated in a scenic lakeside setting in Bánk — an interdisciplinary rural arts and cultural center supporting contemporary performing arts, music, and international artistic exchange. Within Bridging the A-I-R, METTRIN — together with the Swing Jazz Cultural Foundation (SJKA) — coordinates the Hungarian ART-IN-RES platform and hosts pilot residencies and public events.
