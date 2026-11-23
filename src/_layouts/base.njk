@@ -392,26 +392,28 @@
             .topbar__inner {
                 position: relative;
             /* === Mobile-only decorative band at top of page === */
-.mobile-deco {
-    display: none;
+/* === Project logo above About section === */
+.about-hero-logo {
+    display: flex;
+    justify-content: center;
+    margin: 0 0 30px;
+    padding: 10px 0 0;
+}
+.about-hero-logo img {
+    display: block;
+    width: 100%;
+    max-width: 640px;
+    height: auto;
 }
 @media (max-width: 720px) {
-    .mobile-deco {
-        display: block;
-        width: 100%;
-        height: 65px;
-        margin: 0;
-        padding: 0;
-        overflow: hidden;
-        pointer-events: none;
-        background: #FFFFFF;
+    .about-hero-logo {
+        margin: 0 0 24px;
+        padding: 6px 0 0;
     }
-    .mobile-deco svg {
-        display: block;
-        width: 100%;
-        height: 100%;
+    .about-hero-logo img {
+        max-width: 92%;
     }
-}    
+}   
             }
         }
      /* === Hide any "Powered by Netlify" widget that might render === */
