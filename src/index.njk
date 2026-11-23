@@ -143,6 +143,11 @@ layout: base.njk
             <h4 class="event-card__title">{{ pilot.data.title }}</h4>
             <p class="event-card__org">Hosted by {{ pilot.data.host }}{% if pilot.data.model %} · {{ pilot.data.model }}{% endif %}</p>
             <details class="event-card__details">
+            {% if event.data.poster %}
+<figure class="event-card__poster-inside">
+    <img src="{{ event.data.poster | url }}" alt="{{ event.data.title }} — poster" loading="lazy">
+</figure>
+{% endif %}
                 <summary>Read more</summary>
                 <div class="event-card__desc">{{ pilot.templateContent | safe }}</div>
             </details>

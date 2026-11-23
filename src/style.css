@@ -1184,8 +1184,8 @@ em     { font-style: italic; }
 }
 
 .output__status--available {
-    background: #d4edda;
-    color: #155724;
+    background: #DBE1F0;      /* ← světlá brand modrá místo #d4edda zelené */
+    color: #4E67AC;           /* ← brand modrá místo tmavé zelené */
 }
 
 .output__status--in-preparation {
